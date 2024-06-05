@@ -2,6 +2,7 @@ Neovim Configuration for MacBook Pro M3
 
 <img width="853" alt="image" src="https://github.com/inarvos/Neovim-Mac-Pro-M3/assets/37037175/98eadf13-0f16-449b-8982-8cd435dbf740">
 
+
 Welcome to my Neovim configuration repository! This is my current setup, tailored for Python development. This configuration is under active development and continuously evolving to support additional languages and improve functionality.
 
 
@@ -11,6 +12,10 @@ Overview
 - Plugin Manager: https://github.com/wbthomason/packer.nvim
 - Current Focus: Python programming
 - Future Plans: Extend support for C, C#, C++, and Java
+
+
+![image](https://github.com/inarvos/Neovim-Mac-Pro-M3/assets/37037175/ecce67d0-6738-4767-a574-e25e4f1fa2ad)
+
 
 
 Features
