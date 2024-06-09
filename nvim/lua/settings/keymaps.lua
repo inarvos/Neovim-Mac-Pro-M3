@@ -25,7 +25,18 @@ keymap.set('n', 'x', '"_x')
 -- Quit Neovim
 keymap.set('n', 'q', ':q<cr>')
 keymap.set('n', '<leader>qa', ':qa<cr>')
+
+-- Save
 keymap.set('n', 'w', ':w<cr>')
+
+-- Key mappings for clipboard operations
+local opts = { noremap = true, silent = true }
+
+-- Map Cmd+v to paste the text from system clipboard
+vim.api.nvim_set_keymap('n', '<D-v>', '"+p', opts)
+vim.api.nvim_set_keymap('v', '<D-v>', '"+p', opts)
+vim.api.nvim_set_keymap('i', '<D-v>', '<C-r>+', opts)
+vim.api.nvim_set_keymap('c', '<D-v>', '<C-R>+', opts)
 
 -- Open terminal
 keymap.set("n", "<leader>tr", ":terminal<Return>")
@@ -39,7 +50,7 @@ keymap.set("n", "<leader>nh", ":nohl<cr>")
 keymap.set('n', '+', '<C-a>')
 keymap.set('n', '-', '<C-x>')
 
--- Delete a word backwards using a custom function
+-- Always delete the whole word using a custom function
 keymap.set('n', 'dw', ':lua delete_current_word()<CR>')
 
 -- Select all text

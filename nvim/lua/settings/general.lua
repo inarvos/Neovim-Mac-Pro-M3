@@ -7,9 +7,6 @@ if vim.fn.has('gui_running') == 1 then
     vim.o.guifont = 'Inarvos Nerd Font:h28'
 end
 
--- Set the leader key to space
-vim.g.mapleader = " "
-
 -- Add more general settings here
 
 -- Turn off paste mode when leaving insert mode
