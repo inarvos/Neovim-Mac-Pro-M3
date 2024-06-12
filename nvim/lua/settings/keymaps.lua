@@ -86,12 +86,6 @@ keymap.set("n", "tp", ":tabp<CR>") -- Go to previous tab
 keymap.set("n", "<leader>nt", ":NvimTreeToggle<CR>") -- Toggle file explorer
 keymap.set("n", "<leader>ne", ":NeoTreeFocusToggle<CR>") -- Toggle Neotree file explorer
 
--- vimspector
-keymap.set("n", "<leader>vs", ":call vimspector#Launch()<CR>") -- Launch vimspector
-
--- vim-maximizer
-keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- Toggle split window maximization
-
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- Find files within current working directory
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- Find string in current working directory as you type

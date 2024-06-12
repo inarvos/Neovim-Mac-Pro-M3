@@ -26,16 +26,16 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),   -- Scroll documentation down
     ['<C-Space>'] = cmp.mapping.complete(),   -- Trigger completion
     ['<C-e>'] = cmp.mapping.abort(),          -- Abort completion
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Confirm selection
+    ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Confirm selection
 
     -- Navigate through completion items
-    ['<Down>'] = cmp.mapping.select_next_item(),
-    ['<Up>'] = cmp.mapping.select_prev_item(),
+    ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+    ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 
     -- Custom mapping for space key to confirm and complete
     ['<Space>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.confirm({ select = true })
+        cmp.confirm({ select = false })
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(" ", true, true, true), "n", true)
         vim.defer_fn(function() cmp.complete() end, 10)
       else
