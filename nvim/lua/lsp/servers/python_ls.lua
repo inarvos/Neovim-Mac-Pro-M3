@@ -6,15 +6,15 @@ local lspconfig = require('lspconfig')
 
 -- Setup Pyright language server
 lspconfig.pyright.setup {
-  -- cmd = {"pyright-langserver"},  -- Command to start the Pyright language server (optional, usually auto-detected)
-  on_attach = require('settings.lsp').on_attach,  -- Function to run when the server attaches to a buffer
-  settings = {
-    python = {
-      analysis = {
-        typeCheckingMode = "strict",  -- Set type checking mode to strict
-        autoSearchPaths = true,  -- Automatically search for Python paths
-        useLibraryCodeForTypes = true  -- Use library code for type inference
-      }
+    -- cmd = {"pyright-langserver"},  -- Command to start the Pyright language server (optional, usually auto-detected)
+    on_attach = require('settings.lsp').on_attach,  -- Function to run when the server attaches to a buffer
+    settings = {
+        python = {
+            analysis = {
+                typeCheckingMode = "strict",  -- Set type checking mode to strict
+                autoSearchPaths = true,  -- Automatically search for Python paths
+                useLibraryCodeForTypes = true  -- Use library code for type inference
+            }
+        }
     }
-  }
 }

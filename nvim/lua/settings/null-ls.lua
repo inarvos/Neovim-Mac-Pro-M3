@@ -10,20 +10,20 @@ local diagnostics = null_ls.builtins.diagnostics
 
 -- Setup null-ls
 null_ls.setup({
-  sources = {
-    -- Configure Prettier for formatting
-    formatting.prettier.with({
-      extra_args = { "--single-quote", "--jsx-single-quote" } -- Additional arguments for Prettier
-    }),
-    -- Configure ESLint for diagnostics
-    diagnostics.eslint.with({
-      command = "eslint", -- Command to run ESLint
-    }),
-  },
-  on_attach = function(client)
-    -- Automatically format on save if the server supports document formatting
-    if client.server_capabilities.document_formatting then
-      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
-    end
-  end,
+    sources = {
+        -- Configure Prettier for formatting
+        formatting.prettier.with({
+            extra_args = { "--single-quote", "--jsx-single-quote" } -- Additional arguments for Prettier
+        }),
+        -- Configure ESLint for diagnostics
+        diagnostics.eslint.with({
+            command = "eslint", -- Command to run ESLint
+        }),
+    },
+    on_attach = function(client)
+        -- Automatically format on save if the server supports document formatting
+        if client.server_capabilities.document_formatting then
+            vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
+        end
+    end,
 })

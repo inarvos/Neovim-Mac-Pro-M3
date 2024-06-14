@@ -61,22 +61,22 @@ vim.opt.pumblend = 5               -- Set popup menu transparency
 -- Function to add options
 local Type = {GLOBAL_OPTION = "o", WINDOW_OPTION = "wo", BUFFER_OPTION = "bo"}
 local add_options = function(option_type, options)
-  if type(options) ~= "table" then
-    error 'options should be a type of "table"'
-    return
-  end
-  local vim_option = vim[option_type]
-  for key, value in pairs(options) do
-    vim_option[key] = value
-  end
+    if type(options) ~= "table" then
+        error 'options should be a type of "table"'
+        return
+    end
+    local vim_option = vim[option_type]
+    for key, value in pairs(options) do
+        vim_option[key] = value
+    end
 end
 
 -- Add global options using the function
 local Option = {}
 Option.g = function(options)
-  add_options(Type.GLOBAL_OPTION, options)
+    add_options(Type.GLOBAL_OPTION, options)
 end
 
 Option.g {
-  virtualedit = "onemore",  -- Allow cursor to move one character past the end of the line
+    virtualedit = "onemore",  -- Allow cursor to move one character past the end of the line
 }

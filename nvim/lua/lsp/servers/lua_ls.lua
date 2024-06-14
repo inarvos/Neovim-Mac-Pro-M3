@@ -6,24 +6,24 @@ local lspconfig = require('lspconfig')
 
 -- Setup Lua language server
 lspconfig.lua_ls.setup {
-  cmd = {"lua-language-server"},  -- Command to start the Lua language server
-  on_attach = require('settings.lsp').on_attach,  -- Function to run when the server attaches to a buffer
-  settings = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT',  -- Use LuaJIT as the runtime
-        path = vim.split(package.path, ';'),  -- Setup Lua runtime path
-      },
-      diagnostics = {
-        globals = {'vim'},  -- Recognize the 'vim' global variable
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),  -- Make the server aware of Neovim runtime files
-        checkThirdParty = false  -- Disable third-party checks
-      },
-      telemetry = {
-        enable = false,  -- Disable telemetry
-      },
+    cmd = {"lua-language-server"},  -- Command to start the Lua language server
+    on_attach = require('settings.lsp').on_attach,  -- Function to run when the server attaches to a buffer
+    settings = {
+        Lua = {
+            runtime = {
+                version = 'LuaJIT',  -- Use LuaJIT as the runtime
+                path = vim.split(package.path, ';'),  -- Setup Lua runtime path
+            },
+            diagnostics = {
+                globals = {'vim'},  -- Recognize the 'vim' global variable
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),  -- Make the server aware of Neovim runtime files
+                checkThirdParty = false  -- Disable third-party checks
+            },
+            telemetry = {
+                enable = false,  -- Disable telemetry
+            },
+        },
     },
-  },
 }

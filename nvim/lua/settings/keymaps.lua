@@ -33,10 +33,10 @@ keymap.set('n', 'w', ':w<cr>')
 local opts = { noremap = true, silent = true }
 
 -- Map Cmd+v to paste the text from system clipboard
-vim.api.nvim_set_keymap('n', '<D-v>', '"+p', opts)
-vim.api.nvim_set_keymap('v', '<D-v>', '"+p', opts)
-vim.api.nvim_set_keymap('i', '<D-v>', '<C-r>+', opts)
-vim.api.nvim_set_keymap('c', '<D-v>', '<C-R>+', opts)
+keymap.set('n', '<D-v>', '"+p', opts)
+keymap.set('v', '<D-v>', '"+p', opts)
+keymap.set('i', '<D-v>', '<C-r>+', opts)
+keymap.set('c', '<D-v>', '<C-R>+', opts)
 
 -- Open terminal
 keymap.set("n", "<leader>tr", ":terminal<Return>")
@@ -56,7 +56,7 @@ keymap.set('n', 'dw', ':lua delete_current_word()<CR>')
 -- Select all text
 keymap.set('n', '<C-a>', 'gg<S-v>G')
 
--- Window management
+-- Window management (split screen)
 keymap.set('n', 'ss', ':split<Return>') -- Split window horizontally
 keymap.set('n', 'sv', ':vsplit<Return><C-w>w') -- Split window vertically
 keymap.set("n", "se", "<C-w>=") -- Make split windows equal width & height
@@ -99,31 +99,31 @@ keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- List available 
 
 -- Function to delete the current word under the cursor
 function _G.delete_current_word()
-  local current_col = vim.fn.col('.')
-  local line = vim.fn.getline('.')
-  local line_len = #line
-  local start_col, end_col
+    local current_col = vim.fn.col('.')
+    local line = vim.fn.getline('.')
+    local line_len = #line
+    local start_col, end_col
 
-  -- Find the start and end of the word under the cursor
-  local before = line:sub(1, current_col - 1):find('%w+$')
-  if before then
-    start_col = before
-  else
-    start_col = current_col
-  end
+    -- Find the start and end of the word under the cursor
+    local before = line:sub(1, current_col - 1):find('%w+$')
+    if before then
+        start_col = before
+    else
+        start_col = current_col
+    end
 
-  local after = line:sub(current_col):find('%W')
-  if after then
-    end_col = current_col + after - 2
-  else
-    end_col = line_len
-  end
+    local after = line:sub(current_col):find('%W')
+    if after then
+        end_col = current_col + after - 2
+    else
+        end_col = line_len
+    end
 
-  -- Ensure end_col is within the line length
-  if end_col > line_len then
-    end_col = line_len
-  end
+-- Ensure end_col is within the line length
+    if end_col > line_len then
+        end_col = line_len
+    end
 
-  -- Delete the word
-  vim.api.nvim_buf_set_text(0, vim.fn.line('.') - 1, start_col - 1, vim.fn.line('.') - 1, end_col, {""})
+    -- Delete the word
+    vim.api.nvim_buf_set_text(0, vim.fn.line('.') - 1, start_col - 1, vim.fn.line('.') - 1, end_col, {""})
 end
