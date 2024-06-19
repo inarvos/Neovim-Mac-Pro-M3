@@ -28,12 +28,14 @@ This configuration sets Neovim to use UTF-8 encoding for compatibility and inclu
 <img width="1255" alt="Screenshot 2024-06-19 at 13 26 07" src="https://github.com/inarvos/Neovim-Mac-Pro-M3/assets/37037175/47977065-b97c-4029-9bc5-817187c38343">
  
 
+
 - Coding:
 
 For coding, this setup includes powerful plugins such as 'nvim-lspconfig' for Language Server Protocol (LSP) configurations, currently supporting Python through Pyright and Lua for Neovim development. It also features autocompletion via 'nvim-cmp', integrated with sources for LSP, buffers, paths, and more. Code formatting is handled by Prettier, ensuring consistent code style across files. The configuration leverages Tree-sitter for enhanced code highlighting and folding, making it easier to read and navigate complex codebases. Additionally, it includes comprehensive Git integration with plugins like Fugitive and Gitsigns, providing essential Git commands and visual indicators within Neovim.
 
 <img width="1699" alt="Screenshot 2024-06-19 at 13 04 59" src="https://github.com/inarvos/Neovim-Mac-Pro-M3/assets/37037175/50163928-122e-4912-a6f2-f8e2099686e3">
  
+
 
 
 - Keybindings and Design:
@@ -46,6 +48,7 @@ Utility functions are included to reload Neovim configurations on the fly, check
 
 <img width="1111" alt="Screenshot 2024-06-19 at 13 11 00" src="https://github.com/inarvos/Neovim-Mac-Pro-M3/assets/37037175/702a2d06-9fd7-4f64-a2e1-4ef999cd1f83">
  
+
 
 
 Comments and Documentation:
