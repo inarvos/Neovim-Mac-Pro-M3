@@ -2,64 +2,53 @@
 
 -- This file sets various Neovim options to enhance the editing experience.
 
--- Set general editor options
-vim.opt.title = true              -- Show title of the file in the title bar
-vim.opt.autoindent = true         -- Copy indent from current line when starting a new line
-vim.opt.smartindent = true        -- Smart autoindenting when starting a new line
-vim.opt.cursorline = true         -- Highlight the screen line of the cursor
-vim.opt.hlsearch = true           -- Highlight all matches of search pattern
-vim.opt.backup = false            -- Disable backup file creation
-vim.opt.showcmd = true            -- Show (partial) command in the last line of the screen
-vim.opt.cmdheight = 1             -- Number of screen lines to use for the command-line
-vim.opt.laststatus = 2            -- Always display the status line
-vim.opt.expandtab = true          -- Use spaces instead of tabs
-vim.opt.backupskip = { '/tmp/*', '/private/tmp/*' }  -- Don't make backup files for temporary files
-vim.opt.inccommand = 'split'      -- Show effects of command incrementally as you type
-vim.opt.ignorecase = true         -- Ignore case in search patterns
-vim.opt.smartcase = true          -- Override 'ignorecase' if search pattern contains uppercase letters
-vim.opt.smarttab = true           -- Insert tabs on the start of a line according to 'shiftwidth'
-vim.opt.breakindent = true        -- Preserve indentation of a virtual line
-vim.opt.shiftwidth = 4            -- Number of spaces to use for each step of (auto)indent
-vim.opt.tabstop = 4               -- Number of spaces that a <Tab> counts for
-vim.opt.wrap = true               -- Wrap long lines
-vim.opt.whichwrap:append "<>[]hl" -- Allow movement keys to wrap to previous/next line when cursor is on the first/last character in the line
-vim.opt.backspace = { 'start', 'eol', 'indent' }  -- Allow backspacing over everything in insert mode
-vim.opt.path:append { '**' }      -- Search down into subfolders
-vim.opt.wildignore:append { '*/node_modules/*' }  -- Ignore node_modules directory when searching
-vim.opt.splitright = false        -- Vertical splits open to the left of the current window
-vim.opt.splitbelow = false        -- Horizontal splits open above the current window
-vim.opt.clipboard:append("unnamedplus")  -- Use the system clipboard as the default register
-
--- Add asterisks in block comments
-vim.opt.formatoptions:append { 'r' }
-
--- Enable true color support
-vim.opt.termguicolors = true       -- Enable 24-bit RGB colors
-vim.opt.background = 'dark'        -- Use dark background
-vim.opt.signcolumn = 'yes'         -- Always show the sign column
-vim.opt.winblend = 0               -- Disable window transparency
-vim.opt.wildoptions = 'pum'        -- Display completion matches using a popup menu
-vim.opt.pumblend = 5               -- Set popup menu transparency
-
--- Function to add options
-local Type = {GLOBAL_OPTION = "o", WINDOW_OPTION = "wo", BUFFER_OPTION = "bo"}
-local add_options = function(option_type, options)
-    if type(options) ~= "table" then
-        error 'options should be a type of "table"'
-        return
-    end
-    local vim_option = vim[option_type]
-    for key, value in pairs(options) do
-        vim_option[key] = value
-    end
-end
-
--- Add global options using the function
-local Option = {}
-Option.g = function(options)
-    add_options(Type.GLOBAL_OPTION, options)
-end
-
-Option.g {
-    virtualedit = "onemore",  -- Allow cursor to move one character past the end of the line
+local options = {
+    general = {
+        title = true,             -- Show title of the file in the title bar
+        autoindent = true,        -- Copy indent from current line when starting a new line
+        smartindent = true,       -- Smart autoindenting when starting a new line
+        cursorline = true,        -- Highlight the screen line of the cursor
+        hlsearch = true,          -- Highlight all matches of search pattern
+        backup = false,           -- Disable backup file creation
+        showcmd = true,           -- Show (partial) command in the last line of the screen
+        cmdheight = 1,            -- Number of screen lines to use for the command-line
+        laststatus = 2,           -- Always display the status line
+        expandtab = true,         -- Use spaces instead of tabs
+        inccommand = 'split',     -- Show effects of command incrementally as you type
+        ignorecase = true,        -- Ignore case in search patterns
+        smartcase = true,         -- Override 'ignorecase' if search pattern contains uppercase letters
+        smarttab = true,          -- Insert tabs on the start of a line according to 'shiftwidth'
+        breakindent = true,       -- Preserve indentation of a virtual line
+        shiftwidth = 4,           -- Number of spaces to use for each step of (auto)indent
+        tabstop = 4,              -- Number of spaces that a <Tab> counts for
+        wrap = true,              -- Wrap long lines
+        backspace = { 'start', 'eol', 'indent' },  -- Allow backspacing over everything in insert mode
+        splitright = false,       -- Vertical splits open to the left of the current window
+        splitbelow = false,       -- Horizontal splits open above the current window
+        clipboard = 'unnamedplus',  -- Use the system clipboard as the default register
+        formatoptions = 'r',      -- Add asterisks in block comments
+    },
+    search = {
+        path = { '**' },          -- Search down into subfolders
+        wildignore = { '*/node_modules/*' },  -- Ignore node_modules directory when searching
+    },
+    ui = {
+        termguicolors = true,     -- Enable 24-bit RGB colors
+        background = 'dark',      -- Use dark background
+        signcolumn = 'yes',       -- Always show the sign column
+        winblend = 0,             -- Disable window transparency
+        wildoptions = 'pum',      -- Display completion matches using a popup menu
+        pumblend = 5,             -- Set popup menu transparency
+    },
+    backup = {
+        backupskip = { '/tmp/*', '/private/tmp/*' } -- Don't make backup files for temporary files
+    },
 }
+
+for group, opts in pairs(options) do
+    for k, v in pairs(opts) do
+        vim.opt[k] = v
+    end
+end
+
+vim.opt.whichwrap:append("<>[]hl")  -- Allow movement keys to wrap to previous/next line when cursor is on the first/last character in the line
