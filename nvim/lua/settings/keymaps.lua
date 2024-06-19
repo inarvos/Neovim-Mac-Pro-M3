@@ -62,6 +62,8 @@ keymap.set('n', 'sv', ':vsplit<Return><C-w>w') -- Split window vertically
 keymap.set("n", "se", "<C-w>=") -- Make split windows equal width & height
 keymap.set("n", "sx", ":close<CR>") -- Close current split window
 keymap.set('n', '<Space>', '<C-w>w') -- Move between windows
+-- New OS window (Neovide):
+keymap.set('n', '<leader>wo', ':NewWindow<CR>', { noremap = true, silent = true })
 
 -- Move between windows using leader key and arrow keys
 keymap.set('', '<leader><up>', '<C-w><up>')
@@ -126,4 +128,5 @@ function _G.delete_current_word()
 
     -- Delete the word
     vim.api.nvim_buf_set_text(0, vim.fn.line('.') - 1, start_col - 1, vim.fn.line('.') - 1, end_col, {""})
+
 end

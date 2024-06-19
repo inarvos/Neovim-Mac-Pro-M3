@@ -23,6 +23,9 @@ vim.cmd [[
     augroup END
 ]]
 
+-- New OS window (Neovide) command
+vim.cmd('command! NewWindow execute "!open -na Neovide"')
+
 -- Colorscheme configuration
 local status, _ = pcall(function() vim.cmd('colorscheme default') end)
 if not status then
