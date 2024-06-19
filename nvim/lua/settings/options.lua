@@ -1,15 +1,6 @@
 -- lua/settings/options.lua
 
--- This file sets various Neovim options for better editing experience, including encoding settings, line numbers, indentation, search behavior, clipboard integration, and more.
-
--- Set script encoding to UTF-8
-vim.scriptencoding = 'utf-8'
-vim.opt.encoding = 'utf-8'        -- Set default encoding to UTF-8
-vim.opt.fileencoding = 'utf-8'    -- Set file encoding to UTF-8
-
--- Enable line numbers and relative line numbers
-vim.wo.number = true              -- Show line numbers
-vim.wo.relativenumber = false     -- Show relative line numbers
+-- This file sets various Neovim options to enhance the editing experience.
 
 -- Set general editor options
 vim.opt.title = true              -- Show title of the file in the title bar
@@ -38,14 +29,6 @@ vim.opt.wildignore:append { '*/node_modules/*' }  -- Ignore node_modules directo
 vim.opt.splitright = false        -- Vertical splits open to the left of the current window
 vim.opt.splitbelow = false        -- Horizontal splits open above the current window
 vim.opt.clipboard:append("unnamedplus")  -- Use the system clipboard as the default register
-vim.o.mouse = 'a'                 -- Enable mouse support in all modes
-
--- Undercurl settings for terminal
-vim.cmd([[let &t_Cs = "\e[4:3m"]])  -- Enable undercurl
--- vim.cmd([[let &t_Ce = "\e[4:0m"]])  -- Disable undercurl
-
--- Enable syntax highlighting
-vim.cmd('syntax on')
 
 -- Add asterisks in block comments
 vim.opt.formatoptions:append { 'r' }
