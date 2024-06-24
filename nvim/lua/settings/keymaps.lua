@@ -63,7 +63,7 @@ keymap.set("n", "se", "<C-w>=") -- Make split windows equal width & height
 keymap.set("n", "sx", ":close<CR>") -- Close current split window
 keymap.set('n', '<leader>', '<C-w>w') -- Move between windows
 -- Detach current file into a new Neovide OS window
-keymap.set('n', '<leader>ww', ":let current_file = expand('%:p')<CR>:q<CR>:execute '!neovide ' . shellescape(current_file) . ' &'<CR>", { noremap = true, silent = true })
+keymap.set('n', '<leader>ww', ":let current_file = expand('%:p')<CR>:w<CR>:q!<CR>:execute '!neovide ' . shellescape(current_file) . ' &'<CR>", { noremap = true, silent = true })
 -- New OS window (Neovide):
 keymap.set('n', '<leader>wo', ':NewWindow<CR>', { noremap = true, silent = true })
 

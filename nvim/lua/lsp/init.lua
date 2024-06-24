@@ -9,6 +9,7 @@ require('lsp.servers.lua_ls')
 require('lsp.servers.python_ls')
 
 -- Require other language servers here
+require('lsp.servers.c_ls')
 -- Example:
 -- require('lsp.servers.rust_ls')
 -- require('lsp.servers.go_ls')
