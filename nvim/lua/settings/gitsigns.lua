@@ -30,9 +30,6 @@ require('gitsigns').setup {
         virt_text_priority = 100, -- Priority of virtual text
     },
     current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>', -- Format for blame text
-    current_line_blame_formatter_opts = {
-        relative_time = false, -- Do not use relative time for blame
-    },
     sign_priority = 6, -- Priority of signs
     update_debounce = 100, -- Debounce time for updates (in milliseconds)
     status_formatter = nil, -- Use default status formatter

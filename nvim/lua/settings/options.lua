@@ -4,6 +4,7 @@
 
 local options = {
     general = {
+        virtualedit = 'onemore',  -- Allow cursor to move one character beyond the end of the line in Normal mode
         title = true,             -- Show title of the file in the title bar
         autoindent = true,        -- Copy indent from current line when starting a new line
         smartindent = true,       -- Smart autoindenting when starting a new line
