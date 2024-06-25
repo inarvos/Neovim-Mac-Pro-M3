@@ -10,6 +10,7 @@ require('lsp.servers.python_ls')
 
 -- Require other language servers here
 require('lsp.servers.c_ls')
+require('lsp.servers.csharp_ls')
 -- Example:
 -- require('lsp.servers.rust_ls')
 -- require('lsp.servers.go_ls')
