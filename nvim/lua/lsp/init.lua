@@ -11,6 +11,7 @@ require('lsp.servers.python_ls')
 -- Require other language servers here
 require('lsp.servers.c_ls')
 require('lsp.servers.csharp_ls')
+require('lsp.servers.java_ls')
 require('lsp.servers.cpp_ls')
 
 -- Add additional language server configurations as needed
