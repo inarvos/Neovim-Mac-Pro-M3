@@ -5,7 +5,7 @@
 local lspconfig = require('lspconfig')
 
 -- Path to the jdtls installation
-local jdtls_path = '/opt/homebrew/Cellar/jdtls/1.36.0'  -- Adjust this to your actual path
+local jdtls_path = '/opt/homebrew/opt/jdtls'  -- Adjust this to your actual path
 
 -- Setup jdtls language server
 lspconfig.jdtls.setup {

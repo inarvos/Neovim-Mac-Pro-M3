@@ -5,6 +5,7 @@
 local lspconfig = require('lspconfig')
 
 -- Setup OmniSharp language server
+-- TODO: Set up dotnet / omnisharp with Homebrew after finding a way to make C# langserver work without a manual path to OmniSharp.dll.
 lspconfig.omnisharp.setup {
     cmd = { "dotnet", "/usr/local/bin/omnisharp-osx-arm64-net6.0/OmniSharp.dll", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },  -- Use dotnet to run OmniSharp
     on_attach = require('settings.lsp').on_attach,  -- Function to run when the server attaches to a buffer
