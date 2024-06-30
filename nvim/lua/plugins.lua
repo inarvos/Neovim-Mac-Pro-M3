@@ -89,6 +89,7 @@ require('packer').startup(function(use)
         config = function()
             require('nvim-tree').setup {
                 view = {
+                    side = 'right',
                     width = 25, -- Set default width for NvimTree
                 },
             }
@@ -147,9 +148,6 @@ require('packer').startup(function(use)
     -- Autopairs: -> settings/autopairs.lua
     use {
         'windwp/nvim-autopairs',
-        config = function()
-            require('nvim-autopairs').setup {}
-        end
     }
 
     -- Indent blankline.nvim: -> settings/indent-blankline.lua

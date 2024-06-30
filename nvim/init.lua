@@ -1,12 +1,4 @@
--- This init.lua file sets up Python and Ruby interpreters for Neovim, loads core settings, plugins, LSP configurations, and completion settings, and includes specific settings for Neovide if it’s being used.
-
--- Set the Python 3 interpreter for Neovim
-vim.g.python3_host_prog = '~/.pyenv/versions/3.12.3/bin/python3'
-
--- Setup Ruby:
---vim.g.ruby_host_prog = '~/.rbenv/shims/neovim-ruby-host'
-vim.g.ruby_host_prog = '~/.rbenv/versions/3.3.1/bin/neovim-ruby-host'
---vim.g.loaded_ruby_provider = 0
+-- This init.lua loads core settings, LSP configurations, and completion settings, and includes specific settings for Neovide if it’s being used.
 
 -- Load core settings
 require('settings.options')

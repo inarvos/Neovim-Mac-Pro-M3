@@ -51,16 +51,16 @@ keymap.set('n', '+', '<C-a>')
 keymap.set('n', '-', '<C-x>')
 
 -- Always delete the whole word using a custom function
-keymap.set('n', 'dw', ':lua delete_current_word()<CR>')
+keymap.set('n', '<leader>dw', ':lua delete_current_word()<CR>')
 
 -- Select all text
-keymap.set('n', '<C-a>', 'gg<S-v>G')
+keymap.set('n', '<D-a>', 'gg<S-v>G$')
 
 -- Window management (split screen)
 keymap.set('n', 'ss', ':split<Return>') -- Split window horizontally
 keymap.set('n', 'sv', ':vsplit<Return><C-w>w') -- Split window vertically
 keymap.set("n", "se", "<C-w>=") -- Make split windows equal width & height
-keymap.set("n", "sx", ":close<CR>") -- Close current split window
+keymap.set("n", "sq", ":close<CR>") -- Close current split window
 keymap.set('n', '<leader>', '<C-w>w') -- Move between windows
 -- Detach current file into a new Neovide OS window
 keymap.set('n', '<leader>ww', ":let current_file = expand('%:p')<CR>:w<CR>:q!<CR>:execute '!neovide ' . shellescape(current_file) . ' &'<CR>", { noremap = true, silent = true })
@@ -77,7 +77,7 @@ keymap.set('', '<leader><right>', '<C-w><right>')
 keymap.set('n', 'te', ':tabedit<Return>') -- Edit new tab
 keymap.set("n", "to", ":tabnew<CR>") -- Open new tab
 keymap.set("n", "tc", ":tabclose<CR>") -- Close current tab
-keymap.set("n", "tx", ":tabclose<CR>") -- Close current tab
+keymap.set("n", "tq", ":tabclose<CR>") -- Close current tab
 keymap.set("n", "tn", ":tabn<CR>") -- Go to next tab
 keymap.set("n", "<tab>", ":tabn<CR>") -- Go to next tab
 keymap.set("n", "tp", ":tabp<CR>") -- Go to previous tab
