@@ -1,0 +1,56 @@
+{
+  // Window settings
+  "window.zoomLevel": 1,  // Adjusts the UI zoom level
+  "window.nativeTabs": true,  // Enables native macOS tabs
+
+  // Editor settings
+  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",  // Sets the font family for the editor, prioritizing "Fira Code" and falling back to others if it's not available
+  "editor.fontSize": 15,  // Sets the font size for the editor to 15 pixels
+  "editor.fontLigatures": true,  // Enables font ligatures for better readability of certain symbols (e.g., ==, !=, =>)
+  "editor.cursorBlinking": "solid",  // Sets the cursor to be solid (no blinking)
+  "editor.formatOnSave": false,  // Disables automatic formatting of the document on save
+  "editor.suggest.insertMode": "replace",  // Configures suggestions to replace the word to the right of the cursor when accepted
+  "editor.wordWrap": "on",  // Enables word wrap so that long lines break at the editor's width
+  // Python-specific editor settings
+  "[python]": {
+    "editor.formatOnType": true  // Enables automatic formatting of Python code as you type
+  },
+
+
+  // Workbench settings
+  "workbench.sideBar.location": "right",  // Moves the sidebar to the right side of the window
+  "workbench.editor.enablePreview": false,  // Disables preview mode, so files open directly for editing
+  "workbench.settings.applyToAllProfiles": [
+    "editor.fontFamily"
+  ],  // Applies the specified settings (editor.fontFamily) to all profiles
+  "workbench.colorTheme": "Night Owl",  // Sets the color theme to "Night Owl Black (No Italics)"
+
+  // Terminal settings
+  "terminal.integrated.fontSize": 15,  // Sets the font size for the integrated terminal
+  "terminal.integrated.defaultProfile.osx": "fish",
+    "terminal.integrated.profiles.osx": {
+      "zsh": {
+          "path": "/bin/zsh",
+          "args": []
+      },
+      "bash": {
+          "path": "/bin/bash",
+          "args": []
+      },
+      "fish": {
+          "path": "/opt/homebrew/bin/fish",
+          "args": []
+      },
+    },
+
+  // VSCode Neovim settings
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1  // Assigns a higher affinity to the VSCode Neovim extension, potentially prioritizing its usage
+  },
+  // "vscode-neovim.neovimInitVimPaths.darwin": "${HOME}/.config/nvim/init.lua",  // Specifies the path to the Neovim initialization file
+  // "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",  // Specifies the path to the Neovim executable
+  // "vscode-neovim.neovimClean": true,  // Ensures Neovim starts with a clean environment, without any additional settings or plugins loaded
+
+  // Python settings
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+}

@@ -24,6 +24,8 @@ vim.cmd([[let &t_Cs = "\e[4:3m"]])  -- Enable undercurl
 
 -- Enable syntax highlighting
 vim.cmd('syntax on')
+-- Enable spell checking globally
+-- vim.opt.spell = true
 
 -- Turn off paste mode when leaving insert mode
 vim.api.nvim_create_autocmd("InsertLeave", {
