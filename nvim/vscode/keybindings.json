@@ -1,0 +1,657 @@
+[
+    //NEOVIM:
+    //! Some commands require 'runCommands'
+
+    //Multiple commands:
+    //{
+        //"key": "", // whatever keybinding
+        //"command": "runCommands",
+        //"args": {
+          //"commands": [
+            // commands to run in sequence
+            //"workbench.action.files.save",
+            //"workbench.action.terminal.focus"
+          //]
+        //},
+        //"when": "terminalFocus"
+    //},
+    //Multiple commands with args:
+    //{
+        //"key": "",
+        //"command": "runCommands",
+        //"args": {
+            //"commands": [
+                //{
+                    //"command": "type",
+                    //"args": {
+                        //"text": ":nohl"
+                    //}
+                //},
+                //{
+                    //"command": "type",
+                    //"args": {
+                        //"text": "\n"
+                    //}
+                //},
+            //]
+        //},
+        //"when": "neovim.mode == 'normal'"
+    //},
+    {
+        "key": "escape",
+        "command": "search.action.clearSearchResults",
+        "when": "hasSearchResult"
+    },
+    {
+        "key": "w",
+        "command": "workbench.action.files.save",
+        "when": "neovim.mode == 'normal'"
+    },
+
+    //GoTo line number: :num
+    //File structure: Cmd+shift+.
+    {
+        "key": "x",
+        "command": "deleteRight",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "q",
+        "command": "type",
+        "args": {
+            "text": ":q\n"
+        },
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "q",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "sideBarFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "q",
+        "command": "workbench.action.terminal.kill",
+        "when": "terminalFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space q a",
+        "command": "workbench.action.quit",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "space t q",
+        "command": "workbench.action.closeActiveEditor",
+        "when": "terminalFocus && neovim.mode == 'normal'"
+    },
+    //View info:
+    {
+        "key": "space i",
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+
+    {
+        "key": "space n h",
+        "command": "type",
+        "args": {
+            "text": ":nohl\n"
+        },
+        "when": "neovim.mode == 'normal'"
+    },
+    
+    //Terminal and tree:
+    {
+        "key": "ctrl+w t",
+        "command": "workbench.action.terminal.focus",
+        "when": "!terminalFocus"
+    }, 
+    {
+        "key": "ctrl+w t",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "space t r",
+        "command": "workbench.action.togglePanel",
+        "when": "terminalFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space t r",
+        "command": "workbench.action.togglePanel",
+        "when": "!terminalFocus && activePanel && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space t r",
+        "command": "workbench.action.togglePanel",
+        "when": "terminalFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space t r",
+        "command": "workbench.action.terminal.focus",
+        "when": "!terminalFocus && !activePanel && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space t t",
+        "command": "workbench.action.togglePanel",
+        "when": "terminalFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space t t",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            "workbench.action.togglePanel",
+            "workbench.action.focusActiveEditorGroup",
+          ]
+        },
+        "when": "!terminalFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space t o",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            "workbench.action.terminal.new",
+            "workbench.action.terminal.focus"
+          ]
+        },
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+w e",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "i",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                {
+                    "command": "type",
+                    "args": {
+                        "text": "i"
+                    }
+                },
+            ]
+        },
+        "when": "!editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "escape",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            "vscode-neovim.escape",
+          ]
+        },
+        "when": "terminalFocus && neovim.mode == 'insert' || sideBarFocus && neovim.mode == 'insert'"
+    },
+    {
+        "key": "cmd+r",
+        "command": "python.execInTerminal"
+    },
+    {
+        "key": "ctrl+n t",
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "space n t",
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space n t",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "sideBarVisible && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space n n",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+w n",
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "space n f",
+        "command": "openEditors.newUntitledFile",
+        "when": "neovim.mode == 'normal'"
+    },
+    
+    //Move between splits:
+    {
+        "key": "ctrl+w up",
+        "command": "workbench.action.navigateUp",
+    },
+    {
+        "key": "ctrl+w down",
+        "command": "workbench.action.navigateDown"
+    },
+    {
+        "key": "ctrl+w left",
+        "command": "workbench.action.navigateLeft",
+    },
+    {
+        "key": "ctrl+w left",
+        "command": "workbench.action.terminal.focusPreviousPane",
+        "when": "terminalFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+w right",
+        "command": "workbench.action.navigateRight",
+    },
+    {
+        "key": "ctrl+w right",
+        "command": "workbench.action.terminal.focusNextPane",
+        "when": "terminalFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space right",
+        "command": "workbench.action.terminal.focusNextPane",
+        "when": "terminalFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space up",
+        "command": "workbench.action.navigateUp",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "space down",
+        "command": "workbench.action.navigateDown",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "space left",
+        "command": "workbench.action.navigateLeft",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "space left",
+        "command": "workbench.action.terminal.focusPreviousPane",
+        "when": "terminalFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space right",
+        "command": "workbench.action.navigateRight",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "space right",
+        "command": "workbench.action.terminal.focusNextPane",
+        "when": "terminalFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+w e",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "sideBarFocus"
+    },
+
+    //Table:
+    {
+        "key": " t e",
+        "command": "workbench.action.newWindowTab",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "t q",
+        "command": "workbench.action.closeWindow",
+        "when": "neovim.mode == 'normal'"
+    }, 
+    {
+        "key": "t n",
+        "command": "workbench.action.showNextWindowTab",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "t p",
+        "command": "workbench.action.showPreviousWindowTab",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "space tab",
+        "command": "workbench.action.switchWindow",
+        "when": "neovim.mode == 'normal'"
+    },
+
+    //Split
+    {
+        "key": "cmd+k shift+cmd+\\",
+        "command": "-notebook.cell.split",
+        "when": "editorTextFocus && notebookCellEditable && notebookEditable && notebookEditorFocused"
+    },
+    {
+        "key": "cmd+k cmd+\\",
+        "command": "notebook.cell.split",
+        "when": "editorTextFocus && notebookCellEditable && notebookEditable && notebookEditorFocused"
+    },
+    {
+        "key": "s s",
+        "command": "workbench.action.splitEditorDown",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "s v",
+        "command": "workbench.action.splitEditor",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "s s",
+        "command": "workbench.action.terminal.splitActiveTab",
+        "when": "terminalFocus && neovim.mode == 'normal' && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
+    },
+    {
+        "key": "s v",
+        "command": "workbench.action.terminal.splitActiveTab",
+        "when": "terminalFocus && neovim.mode == 'normal' && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
+    },
+    //Resize:
+    {
+        "key": "space r h",
+        "command": "workbench.action.increaseViewHeight",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space r h",
+        "command": "workbench.action.terminal.resizePaneUp",
+        "when": "terminalFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space r shift+h",
+        "command": "workbench.action.decreaseViewHeight",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space r shift+h",
+        "command": "workbench.action.terminal.resizePaneDown",
+        "when": "terminalFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space r w",
+        "command": "workbench.action.increaseViewWidth",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space r w",
+        "command": "workbench.action.terminal.resizePaneRight",
+        "when": "terminalFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space r shift+w",
+        "command": "workbench.action.decreaseViewWidth",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space r shift+w",
+        "command": "workbench.action.terminal.resizePaneLeft",
+        "when": "terminalFocus && neovim.mode == 'normal'"
+    },
+
+    {
+        "key": "m",
+        "command": "cursorMove",
+        "args": {
+          "to": "wrappedLineColumnCenter",
+          "select": true
+        },
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "d w",
+        "command": "deleteInsideWord",
+        "when": "editorTextFocus && neovim.mode ==  'normal'"
+    },
+    {
+        "key": "d d",
+        "command": "editor.action.deleteLines",
+        "when": "editorTextFocus && neovim.mode ==  'normal'"
+    },
+    {
+        "key": "s left",
+        "command": "workbench.action.moveEditorLeftInGroup",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "s right",
+        "command": "workbench.action.moveEditorRightInGroup",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "tab",
+        "command": "workbench.action.nextEditorInGroup",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "shift+tab",
+        "command": "workbench.action.previousEditorInGroup",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "space r n",
+        "command": "editor.action.rename",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "g c",
+        "command": "editor.action.commentLine",
+        "when": "neovim.mode == 'normal'"
+    },
+    
+    //Fold:
+    //# region # endregion
+    {
+        "key": "cmd+k cmd+0",
+        "command": "-editor.foldAll",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "cmd+k cmd+o",
+        "command": "editor.foldAll",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "shift+z o",
+        "command": "editor.unfoldRecursively",
+        "when": "editorTextFocus && foldingEnabled && neovim.mode == 'normal'"
+    },
+    {
+        "key": "shift+z c",
+        "command": "editor.foldRecursively",
+        "when": "editorTextFocus && foldingEnabled && neovim.mode == 'normal'"
+    },
+
+    {
+        "key": "z z",
+        "command": "editor.toggleFold",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "z c",
+        "command": "editor.fold",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "z shift+c",
+        "command": "editor.foldAll",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "z o",
+        "command": "editor.unfold",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "z shift+r",
+        "command": "editor.unfoldAll",
+        "when": "neovim.mode == 'normal'"
+    },
+
+    //Window:
+    {
+        "key": "space w e",
+        "command": "workbench.action.newWindow",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "space w o",
+        "command": "workbench.action.newWindow",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "space w q",
+        "command": "workbench.action.closeWindow",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+w shift+j",
+        "command": "workbench.action.moveActiveEditorGroupDown",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+w shift+k",
+        "command": "workbench.action.moveActiveEditorGroupUp",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+w shift+h",
+        "command": "workbench.action.moveActiveEditorGroupLeft",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+w shift+l",
+        "command": "workbench.action.moveActiveEditorGroupRight",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+w shift+down",
+        "command": "workbench.action.moveActiveEditorGroupDown",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+w shift+up",
+        "command": "workbench.action.moveActiveEditorGroupUp",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+w shift+left",
+        "command": "workbench.action.moveActiveEditorGroupLeft",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+w shift+right",
+        "command": "workbench.action.moveActiveEditorGroupRight",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "left",
+        "command": "cursorLeft",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "right",
+        "command": "cursorRight",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+shift+=",
+        "command": "workbench.action.maximizeEditor",
+        "when": "neovim.mode != 'insert'"
+    },
+    {
+        "key": "g d",
+        "command": "editor.action.revealDefinition",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "g shift+D",
+        "command": "editor.action.goToTypeDefinition",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "g g",
+        "command": "cursorTop",
+        "when": "neovim.mode == 'normal'"
+    },
+    {
+        "key": "g g",
+        "command": "list.focusFirst",
+        "when": "listFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "list.focusPageDown",
+        "when": "listFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "list.focusPageUp",
+        "when": "listFocus && neovim.mode == 'normal'"
+    },
+    
+    //Folding:
+
+    //disable unfold on hover:
+    {
+        "key": "up",
+        "command": "cursorUp",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "down",
+        "command": "cursorDown",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+
+    //select whole block:
+    {
+        "key": "up",
+        "command": "cursorUpSelect",
+        "when": "neovim.mode == 'visual'"
+    },
+    {
+        "key": "down",
+        "command": "cursorDownSelect",
+        "when": "neovim.mode == 'visual'"
+    },
+    {
+        "key": "left",
+        "command": "cursorLeftSelect",
+        "when": "neovim.mode == 'visual'"
+    },
+    {
+        "key": "right",
+        "command": "cursorRightSelect",
+        "when": "neovim.mode == 'visual'"
+    },
+    
+    //Debug:
+    //GoTo error (insert mode): next: Fn+F8, previous: Shift+Fn+F8
+    {
+        "key": "space b p",
+        "command": "editor.debug.action.toggleInlineBreakpoint",
+        "when": "editorTextFocus && neovim.mode =='normal'"
+    },
+    {
+        "key": "space b p",
+        "command": "editor.debug.action.toggleBreakpoint",
+        "when": "debuggersAvailable && editorTextFocus && neovim.mode =='normal'"
+    },
+    {
+        "key": "space v b p",
+        "command": "editor.debug.action.toggleInlineBreakpoint",
+        "when": "editorTextFocus && neovim.mode =='normal'"
+    },
+
+    //Testing:
+    //...
+
+    //TODO:
+    {
+        "key": "b",
+        "command": "editor.emmet.action.balanceIn",
+        "when": "neovim.mode == 'visual'"
+    }
+]
