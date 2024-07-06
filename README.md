@@ -4,50 +4,110 @@ Neovim Configuration for MacBook Pro M3.
  
 
 
-Welcome to my Neovim configuration repository! This is my current setup, tailored for Python development. This configuration is under active development and continuously evolving to support additional languages and improve functionality.
- 
+Welcome to the ultimate Neovim configuration. This repository provides a highly optimized setup for Python, C, C#, C++, and Java development, and seamless integration with VSCode.
+
 
 
 Overview:
 
-- Plugin Manager: https://github.com/wbthomason/packer.nvim
-- Current Focus: Python programming
-- Future Plans: Extend support for C, C#, C++, and Java
-
+This repository features a meticulously crafted Neovim setup designed to enhance your coding experience. The configuration includes a wide array of plugins, custom keybindings, and comprehensive settings, all documented to ensure ease of use and customization.
 
 ![image](https://github.com/inarvos/Neovim-Mac-Pro-M3/assets/37037175/ecce67d0-6738-4767-a574-e25e4f1fa2ad)
  
 
 
-Features
+Key Features:
+
+- Plugin Management:
+  - Packer: Efficient plugin management with [Packer](https://github.com/wbthomason/packer.nvim), making it easy to install, update, and manage plugins.
 
 - Core Configurations:
+  - General Settings:
+    - UTF-8 encoding to ensure compatibility with a wide range of text files.
+    - Auto-indentation based on file type to maintain consistent code formatting.
+    - Enhanced search capabilities with case-insensitive search by default, switching to case-sensitive if an uppercase letter is used.
+    - Mouse support enabled across all modes for ease of use.
+    - Backup, undo, and swap files are handled appropriately to prevent data loss.
+    - Timeout settings adjusted for better responsiveness and user experience.
+    - Integration of file explorers for intuitive and efficient file management.
+    - A lot more...
 
-This configuration sets Neovim to use UTF-8 encoding for compatibility and includes sensible defaults like showing both absolute and relative line numbers for better navigation. It enables auto-indentation to maintain code consistency and enhances search capabilities with case-insensitive search that respects case when necessary. Mouse support is enabled in all modes to improve usability. File Explorers are included for intuitive file navigation.
+
 
 <img width="1255" alt="Screenshot 2024-06-19 at 13 26 07" src="https://github.com/inarvos/Neovim-Mac-Pro-M3/assets/37037175/47977065-b97c-4029-9bc5-817187c38343">
  
 
 
-- Coding:
+Development Enhancements:
+- Language Server Protocol (LSP):
+  - Configured LSP support for Python, C, C#, C++, Lua, and Java.
+  - `nvim-lspconfig` for easy integration and setup of language servers.
+  - Automatic installation of LSP servers using `nvim-lsp-installer`.
 
-For coding, this setup includes powerful plugins such as 'nvim-lspconfig' for Language Server Protocol (LSP) configurations, currently supporting Python through Pyright and Lua for Neovim development. It also features autocompletion via 'nvim-cmp', integrated with sources for LSP, buffers, paths, and more. Code formatting is handled by Prettier, ensuring consistent code style across files. The configuration leverages Tree-sitter for enhanced code highlighting and folding, making it easier to read and navigate complex codebases. Additionally, it includes comprehensive Git integration with plugins like Fugitive and Gitsigns, providing essential Git commands and visual indicators within Neovim.
+- Autocompletion:
+  - `nvim-cmp` providing intelligent autocompletion integrated with sources like LSP, buffers, and paths.
+  - Snippet support with `LuaSnip`.
+
+- Syntax Highlighting & Formatting:
+  - Tree-sitter for advanced syntax highlighting and code folding.
+  - Prettier for consistent code formatting across files.
+
+- Version Control:
+  - Git integration with Fugitive for essential Git commands within Neovim.
+  - Gitsigns providing visual Git indicators and inline blame information.
+
+VSCode Integration:
+- Neovim Integration with VSCode:
+  - Seamlessly integrate Neovim as the backend for VSCode using the [vscode-neovim](https://github.com/asvetliakov/vscode-neovim) extension.
+  - Enjoy the power and flexibility of Neovim within the VSCode environment, combining the best of both editors using `settings.json` and `keybindings.json` in the vscode folder.
+
+
 
 <img width="1699" alt="Screenshot 2024-06-19 at 13 04 59" src="https://github.com/inarvos/Neovim-Mac-Pro-M3/assets/37037175/50163928-122e-4912-a6f2-f8e2099686e3">
  
 
 
 
-- Keybindings and Design:
+User Interface:
+- Visual Enhancements:
+  - Multiple colorschemes to suit different preferences.
+  - Customizable status line using Lualine.
+  - 24-bit RGB color support for a vibrant coding environment.
 
-Custom key mappings are set to improve efficiency. Navigation, window management, and terminal integration are streamlined with thoughtful keybindings. For visual enhancements, multiple colorschemes are available, alongside a customizable status line provided by Lualine. This setup ensures a pleasant and productive coding environment with support for 24-bit RGB colors and various other UI improvements.
+- Keybindings & Shortcuts:
+  - Custom key mappings for improved efficiency.
+  - Streamlined navigation, window management, and terminal integration.
 
-- Utility Functions and Comments:
+Utility Functions:
+- Functions to reload Neovim configurations seamlessly.
+- Check plugin installations and set key mappings easily.
+- Thoroughly commented configuration files explaining each setting and plugin for easy customization.
 
-Utility functions are included to reload Neovim configurations on the fly, check if plugins are installed, and set key mappings easily. Each configuration file is thoroughly commented to explain the purpose and functionality of the settings and plugins used, making it easy to understand and customize the setup.
+
 
 <img width="1111" alt="Screenshot 2024-06-19 at 13 11 00" src="https://github.com/inarvos/Neovim-Mac-Pro-M3/assets/37037175/702a2d06-9fd7-4f64-a2e1-4ef999cd1f83">
  
+
+
+Installation & Setup:
+
+  1. Clone the repository:
+    git clone https://github.com/inarvos/Neovim-Mac-Pro-M3.git ~/.config/nvim
+
+  2. Install Packer:
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+      ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+  3. Install Plugins:
+    Open Neovim and run :PackerInstall.
+
+  4. LSP Configuration:
+    Ensure that language servers are installed for the desired programming languages (you can use my [terminal repository](https://github.com/inarvos/terminal)).
+
+  5.	VSCode Integration:
+    Install the [vscode-neovim](https://github.com/asvetliakov/vscode-neovim) extension in VSCode and configure it to use Neovim.
+
+<img width="1728" alt="Screenshot 2024-07-06 at 13 49 46" src="https://github.com/inarvos/Neovim-Mac-Pro-M3/assets/37037175/44de8a03-d81c-4598-b25c-bac168f13355">
 
 
 
