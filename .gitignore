@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+__MACOSX/
+
+# Neovim local/generated state
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+Session.vim
+
+# Local runtime/plugin/tool folders should not be committed
+nvim/lazy/
+nvim/site/
+nvim/mason/
+nvim/parser/
+
+# Local archives/backups
+*.zip
+*_backup*
+backup/

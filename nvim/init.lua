@@ -1,27 +1,51 @@
--- This init.lua loads core settings, LSP configurations, and completion settings, and includes specific settings for Neovide if it’s being used.
+-- ~/.config/nvim/init.lua
 
--- Load core settings
-require('settings.options')
-require('settings.keymaps')
-require('settings.general')
-require('settings.null-ls')
-require('settings.colorizer')
-require('settings.autopairs')
+-- Enable Neovim's Lua module loader cache (when available) to improve startup time.
+pcall(vim.loader.enable)
 
--- Source Neovide settings if running in Neovide
-if vim.fn.exists('g:neovide') == 1 then
-    require('settings.neovide')
-    require('settings.gitsigns')
+-- Global leader keys. Set early so all mappings and plugins pick them up consistently.
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- Disable unused language providers to reduce startup checks.
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
+-- Python provider.
+-- Prefer a dedicated Neovim Python venv.
+-- Fall back to your old pyenv nvim-env only if it exists.
+-- If neither exists, disable the Python provider to stop broken pyenv healthcheck errors.
+do
+	local python_hosts = {
+		vim.fn.stdpath("data") .. "/venv/bin/python",
+		"/Users/inarvos/.pyenv/versions/nvim-env/bin/python",
+	}
+
+	local found_python_host = false
+
+	for _, py in ipairs(python_hosts) do
+		if vim.fn.executable(py) == 1 then
+			vim.g.python3_host_prog = py
+			found_python_host = true
+			break
+		end
+	end
+
+	if not found_python_host then
+		vim.g.loaded_python3_provider = 0
+	end
 end
 
--- Load plugins
-require('plugins')
+-- Core configuration (loaded before plugins).
+require("config.options")
+require("config.general")
+require("config.keymaps")
+require("config.autocmds")
+require("config.commands")
+require("config.neovide")
 
--- Load LSP settings
-require('lsp')
+-- LSP user experience settings (keymaps, UI behavior, etc.).
+require("lsp.ui")
 
--- Load completion settings
-require('completion.nvim-cmp')
-
--- Load snippets
---require('snippets.luasnip')
+-- Plugin manager and plugin configurations.
+require("plugins")
