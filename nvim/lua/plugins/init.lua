@@ -45,6 +45,25 @@ require("lazy").setup({
 		end,
 	},
 
+	-- Modern dashboard and small UI helpers
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		keys = {
+			{
+				"<leader>hd",
+				function()
+					Snacks.dashboard.open()
+				end,
+				desc = "home: dashboard",
+			},
+		},
+		opts = function()
+			return require("plugins.config.snacks")
+		end,
+	},
+
 	-- UI for messages/cmdline/popupmenu
 	{
 		"folke/noice.nvim",
