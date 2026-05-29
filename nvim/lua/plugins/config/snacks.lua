@@ -1,20 +1,10 @@
 -- lua/plugins/config/snacks.lua
 -- Modern UI/helper modules via snacks.nvim.
---
--- Enabled in this stage:
---   dashboard  - startup screen
---   bigfile    - safer editing for very large files
---   quickfile  - faster startup when opening a file directly
---   input      - improved vim.ui.input
---
--- Intentionally NOT enabled yet:
---   picker, explorer, notifier, lazygit, indent, scroll, terminal, image.
--- These will be considered in later upgrade stages.
 
 return {
 	bigfile = {
 		enabled = true,
-		size = 1.5 * 1024 * 1024, -- 1.5 MB
+		size = 1.5 * 1024 * 1024,
 		line_length = 1000,
 	},
 
@@ -24,6 +14,17 @@ return {
 
 	input = {
 		enabled = true,
+	},
+
+	lazygit = {
+		enabled = true,
+		configure = true,
+		config = {
+			os = { editPreset = "nvim-remote" },
+			gui = {
+				nerdFontsVersion = "3",
+			},
+		},
 	},
 
 	dashboard = {
@@ -39,7 +40,7 @@ return {
 ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
 ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 
-       Mac Pro M3 • lazy.nvim • LSP • formatting
+       Mac Pro M3 • lazy.nvim • LSP • formatting • Git
 ]],
 
 			keys = {
@@ -66,6 +67,12 @@ return {
 					key = "c",
 					desc = "Open config",
 					action = ":lua Snacks.dashboard.pick('files', { cwd = vim.fn.stdpath('config') })",
+				},
+				{
+					icon = " ",
+					key = "G",
+					desc = "LazyGit",
+					action = ":lua Snacks.lazygit()",
 				},
 				{
 					icon = "󰒲 ",

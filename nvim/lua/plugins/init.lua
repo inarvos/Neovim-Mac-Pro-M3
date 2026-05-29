@@ -58,6 +58,27 @@ require("lazy").setup({
 				end,
 				desc = "home: dashboard",
 			},
+			{
+				"<leader>gg",
+				function()
+					Snacks.lazygit()
+				end,
+				desc = "git: lazygit",
+			},
+			{
+				"<leader>gl",
+				function()
+					Snacks.lazygit.log()
+				end,
+				desc = "git: lazygit log",
+			},
+			{
+				"<leader>gL",
+				function()
+					Snacks.lazygit.log_file()
+				end,
+				desc = "git: lazygit file log",
+			},
 		},
 		opts = function()
 			return require("plugins.config.snacks")
@@ -296,7 +317,44 @@ require("lazy").setup({
 	{
 		"lewis6991/gitsigns.nvim",
 		event = { "BufReadPre", "BufNewFile" },
-		opts = {},
+		config = function()
+			require("plugins.config.gitsigns")
+		end,
+	},
+
+	{
+		"sindrets/diffview.nvim",
+		cmd = {
+			"DiffviewOpen",
+			"DiffviewClose",
+			"DiffviewFileHistory",
+			"DiffviewFocusFiles",
+			"DiffviewToggleFiles",
+			"DiffviewRefresh",
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
+		keys = {
+			{ "<leader>gv", "<cmd>DiffviewOpen<cr>", desc = "git: diff view" },
+			{ "<leader>gV", "<cmd>DiffviewClose<cr>", desc = "git: close diff view" },
+			{ "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "git: current file history" },
+			{ "<leader>gH", "<cmd>DiffviewFileHistory<cr>", desc = "git: repository history" },
+		},
+		opts = {
+			enhanced_diff_hl = true,
+			view = {
+				default = {
+					layout = "diff2_horizontal",
+					disable_diagnostics = true,
+				},
+				file_history = {
+					layout = "diff2_horizontal",
+					disable_diagnostics = true,
+				},
+			},
+		},
 	},
 
 	-- Diagnostics and lists UI
