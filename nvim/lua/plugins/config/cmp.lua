@@ -1,5 +1,5 @@
 -- ~/.config/nvim/lua/plugins/config/cmp.lua
--- Completion configuration (nvim-cmp + LuaSnip).
+-- Completion configuration (nvim-cmp + LuaSnip + lazydev source).
 
 local cmp_ok, cmp = pcall(require, "cmp")
 if not cmp_ok then
@@ -20,8 +20,13 @@ local function has_words_before()
 	if col == 0 then
 		return false
 	end
+
 	local text = vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]
 	return text:sub(col, col):match("%s") == nil
+end
+
+local function has_lazydev()
+	return package.loaded.lazydev ~= nil
 end
 
 cmp.setup({
@@ -64,6 +69,11 @@ cmp.setup({
 	}),
 
 	sources = cmp.config.sources({
+		{
+			name = "lazydev",
+			group_index = 0,
+			enabled = has_lazydev,
+		},
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 		{ name = "path" },
@@ -81,7 +91,7 @@ cmp.setup({
 	},
 })
 
--- Cmdline completion (requires the relevant source plugins).
+-- Cmdline completion.
 if pcall(require, "cmp_cmdline") then
 	cmp.setup.cmdline({ "/", "?" }, {
 		mapping = cmp.mapping.preset.cmdline(),
