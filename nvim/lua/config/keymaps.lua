@@ -26,7 +26,20 @@ keymap.set("n", "q", ":q<cr>", opts)
 keymap.set("n", "<leader>qa", ":qa<cr>", opts)
 
 -- Save.
-keymap.set("n", "w", ":w<cr>", opts)
+keymap.set("n", "w", function()
+	local bufnr = vim.api.nvim_get_current_buf()
+
+	-- Save with normal-mode "w" without triggering Conform format-on-save.
+	vim.b[bufnr].skip_format_on_save_once = true
+
+	local ok_write, err = pcall(vim.cmd, "silent write")
+
+	vim.b[bufnr].skip_format_on_save_once = false
+
+	if not ok_write then
+		vim.notify(err, vim.log.levels.ERROR, { title = "Save failed" })
+	end
+end, opts)
 
 -- Clear search highlight.
 keymap.set("n", "<leader>nh", ":nohl<cr>", opts)

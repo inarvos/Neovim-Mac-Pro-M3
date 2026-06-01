@@ -2,8 +2,9 @@
 -- Code formatting via conform.nvim.
 --
 -- Main behavior:
---   - format on save for normal editable files
---   - :Format for manual formatting
+--   - typed :w formats before saving
+--   - normal-mode w saves without formatting
+--   - :Format remains available as an explicit manual formatter
 --   - <leader>F is configured in the lazy.nvim plugin spec
 --   - safe fallback to LSP formatting when no external formatter exists
 
@@ -32,6 +33,12 @@ local disabled_buftypes = {
 }
 
 local function can_format(bufnr)
+	-- Used by the normal-mode "w" mapping:
+	-- save once without formatting, while typed :w still formats normally.
+	if vim.b[bufnr].skip_format_on_save_once then
+		return false
+	end
+
 	if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
 		return false
 	end
