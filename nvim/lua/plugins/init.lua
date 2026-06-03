@@ -130,6 +130,21 @@ require("lazy").setup({
 		branch = "main",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 	},
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		event = { "BufReadPost", "BufNewFile" },
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("plugins.config.treesitter-context")
+		end,
+		keys = {
+			{
+				"<leader>uc",
+				"<cmd>ContextToggle<cr>",
+				desc = "ui: toggle code context",
+			},
+		},
+	},
 
 	-- Indent guides
 	{
@@ -259,6 +274,47 @@ require("lazy").setup({
 				})
 			end)
 		end,
+	},
+	-- TODO / FIXME / NOTE comment highlighting
+	{
+		"folke/todo-comments.nvim",
+		event = { "BufReadPost", "BufNewFile" },
+		cmd = {
+			"TodoTrouble",
+			"TodoTelescope",
+			"TodoQuickFix",
+			"TodoLocList",
+		},
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("plugins.config.todo-comments")
+		end,
+		keys = {
+			{
+				"]t",
+				function()
+					require("todo-comments").jump_next()
+				end,
+				desc = "todo: next",
+			},
+			{
+				"[t",
+				function()
+					require("todo-comments").jump_prev()
+				end,
+				desc = "todo: previous",
+			},
+			{
+				"<leader>xt",
+				"<cmd>TodoTrouble<cr>",
+				desc = "todo: trouble list",
+			},
+			{
+				"<leader>ft",
+				"<cmd>TodoTelescope<cr>",
+				desc = "todo: telescope",
+			},
+		},
 	},
 
 	-- Statusline

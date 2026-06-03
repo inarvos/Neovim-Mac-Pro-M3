@@ -27,9 +27,17 @@ MiniFiles.setup({
 	},
 })
 
+-- Better text objects: quotes, brackets, arguments, functions, tags, etc.
+local ok_ai, ai = pcall(require, "mini.ai")
+if ok_ai then
+	ai.setup({
+		n_lines = 500,
+	})
+end
+
 -- mini.surround mappings are namespaced to avoid conflicts with core mappings.
-local ok, surround = pcall(require, "mini.surround")
-if ok then
+local ok_surround, surround = pcall(require, "mini.surround")
+if ok_surround then
 	surround.setup({
 		mappings = {
 			add = "gsa",
