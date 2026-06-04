@@ -9,13 +9,13 @@ end
 context.setup({
 	enable = true,
 	multiwindow = false,
-	max_lines = 3,
-	min_window_height = 20,
+	max_lines = 4,
+	min_window_height = 5,
 	line_numbers = true,
 	multiline_threshold = 3,
 	trim_scope = "outer",
-	mode = "cursor",
-	separator = nil,
+	mode = "topline",
+	separator = "─",
 	zindex = 20,
 })
 

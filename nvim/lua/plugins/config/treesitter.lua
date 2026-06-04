@@ -15,6 +15,7 @@ local ensure_installed = {
 
 	"markdown",
 	"markdown_inline",
+    "latex",
 
 	"bash",
 	"zsh",

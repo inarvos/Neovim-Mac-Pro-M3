@@ -317,6 +317,39 @@ require("lazy").setup({
 		},
 	},
 
+	-- Markdown rendering and documentation view
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		ft = { "markdown" },
+		cmd = {
+			"RenderMarkdown",
+		},
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("plugins.config.render-markdown")
+		end,
+		keys = {
+			{
+				"<leader>md",
+				"<cmd>RenderMarkdown toggle<cr>",
+				desc = "markdown: toggle render",
+			},
+			{
+				"<leader>mD",
+				"<cmd>RenderMarkdown buf_toggle<cr>",
+				desc = "markdown: toggle render buffer",
+			},
+			{
+				"<leader>mp",
+				"<cmd>RenderMarkdown preview<cr>",
+				desc = "markdown: preview",
+			},
+		},
+	},
+
 	-- Statusline
 	{
 		"nvim-lualine/lualine.nvim",
