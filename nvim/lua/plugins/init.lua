@@ -275,6 +275,7 @@ require("lazy").setup({
 			end)
 		end,
 	},
+
 	-- TODO / FIXME / NOTE comment highlighting
 	{
 		"folke/todo-comments.nvim",
@@ -315,6 +316,59 @@ require("lazy").setup({
 				desc = "todo: telescope",
 			},
 		},
+	},
+
+	-- Terminal integration
+	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		cmd = {
+			"ToggleTerm",
+			"TermExec",
+		},
+		opts = {
+			size = 14,
+			open_mapping = [[<c-\>]],
+			hide_numbers = true,
+			shade_filetypes = {},
+			shade_terminals = true,
+			shading_factor = 2,
+			start_in_insert = true,
+			insert_mappings = true,
+			terminal_mappings = true,
+			persist_size = true,
+			direction = "horizontal",
+			close_on_exit = false,
+			shell = vim.o.shell,
+		},
+	},
+
+	-- Task runner / job manager
+	{
+		"stevearc/overseer.nvim",
+		cmd = {
+			"OverseerOpen",
+			"OverseerClose",
+			"OverseerToggle",
+			"OverseerRun",
+			"OverseerShell",
+			"OverseerTaskAction",
+			"TaskRunPython",
+			"TaskRunNode",
+		},
+		keys = {
+			{ "<leader>or", "<cmd>OverseerRun<cr>", desc = "task: run project task" },
+			{ "<leader>ot", "<cmd>OverseerToggle<cr>", desc = "task: toggle list" },
+			{ "<leader>oo", "<cmd>OverseerOpen<cr>", desc = "task: open list" },
+			{ "<leader>oc", "<cmd>OverseerClose<cr>", desc = "task: close list" },
+			{ "<leader>os", "<cmd>OverseerShell<cr>", desc = "task: shell command" },
+			{ "<leader>oa", "<cmd>OverseerTaskAction<cr>", desc = "task: action" },
+			{ "<leader>op", "<cmd>TaskRunPython<cr>", desc = "task: run python file" },
+			{ "<leader>on", "<cmd>TaskRunNode<cr>", desc = "task: run node file" },
+		},
+		config = function()
+			require("plugins.config.overseer")
+		end,
 	},
 
 	-- Markdown rendering and documentation view
