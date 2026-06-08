@@ -27,7 +27,7 @@ local function lsp_clients()
 	for _, client in ipairs(clients) do
 		local name = client.name
 
-		if name ~= "null-ls" and name ~= "copilot" then
+		if name ~= "copilot" then
 			if not seen[name] then
 				table.insert(names, name)
 				seen[name] = true
