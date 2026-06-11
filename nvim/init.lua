@@ -7,6 +7,8 @@ pcall(vim.loader.enable)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- normal terminal Neovim config continues below
+
 -- Disable unused language providers to reduce startup checks.
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0

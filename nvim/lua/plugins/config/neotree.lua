@@ -2,6 +2,13 @@
 -- File explorer configuration via neo-tree.nvim.
 
 require("neo-tree").setup({
+	open_files_do_not_replace_types = {
+		"terminal",
+		"Trouble",
+		"qf",
+		"edgy",
+	},
+
 	close_if_last_window = true,
 	popup_border_style = "rounded",
 
@@ -15,7 +22,7 @@ require("neo-tree").setup({
 		width = 25,
 
 		mappings = {
-			["<cr>"] = "open_with_window_picker",
+			["<cr>"] = "open",
 			["o"] = "open",
 			["s"] = "open_split",
 			["v"] = "open_vsplit",

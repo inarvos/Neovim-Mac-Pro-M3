@@ -85,6 +85,12 @@ require("lazy").setup({
 		end,
 	},
 
+	-- Animated ASCII/pixel-art splash support.
+	{
+		"amansingh-afk/milli.nvim",
+		lazy = false,
+	},
+
 	-- UI for messages/cmdline/popupmenu
 	{
 		"folke/noice.nvim",
